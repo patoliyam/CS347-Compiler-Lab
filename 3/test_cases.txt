@@ -1,0 +1,39 @@
+a = 5;
+
+p = Processor( isa = "AR", clock_speed = 40, l1_memory = Mem1);
+
+j = Job(job_id=1, flops_required= 100, deadline = 50, mem_required = 512,affinity = [0.2,0.5,1,2]);
+
+c = Cluster(processors=[cluster_1, cluster_2],topology = "star", 100,, name ="cluster3");
+
+
+while(! Ram.get_available_memory())
+{
+	wait(1);
+}
+
+if (job_1.get_memory() <= ram.get_available_memory())
+{
+	proc_1.submit_jobs(job_1);
+}
+else
+{
+	discard_job(job_1);
+}
+
+for ( i=0;i<5;i++)
+{
+	processor_array[i] = Processor( isa = 'AMD', clock_speed = 80, l1_memory = Memory(memory_type='primary', mem_size = 512 ));
+}
+
+cluster_3.submit_jobs(job_b_array1);
+
+run([proc_1,proc_2,proc_3]);
+
+s = Scheduler(Cluster = c, job_array = [job1, job2, job3], processor_array = [proc1,proc2,proc3]);
+
+set_algo(proc1,algo1);
+
+set_job_affinity(arg1,arg2);
+
+Scheduler(Cluster = c, job_array = [job1, job2, job3], processor_array = [proc1,proc2,proc3]).get_load();

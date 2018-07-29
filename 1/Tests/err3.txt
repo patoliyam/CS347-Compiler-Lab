@@ -1,0 +1,19 @@
+a := 3;
+b := b+3;
+
+if a<3 then 
+begin
+	r := r*2+6;
+	p := p-3;
+	q := 2*p;
+	if p < 3 then
+	begin 
+		p := p*8;
+		r := r+3;
+		g := g-6;
+	end
+	p := 6-p;
+	while r=2 do
+		p := 3-p;
+end
+

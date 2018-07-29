@@ -1,0 +1,1 @@
+j = Job(job_id=1, flops_required= 100, deadline = 50*2, mem_required = 512,affinity = [0.2,0.5,1,2]);

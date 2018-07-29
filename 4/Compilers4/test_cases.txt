@@ -1,0 +1,192 @@
+
+
+
+
+
+
+int b,c;
+b = 12;
+int a=b;
+
+int a,b;
+a = 14;
+if(a<2)
+{
+	b = 10;
+}
+
+for(int i=0;i<2 ;i++)
+{
+	i = i+1;
+}
+
+int a,b;
+while(a<3)
+{
+	while(b<2)
+	{
+		int c;
+	}
+	int d;
+}
+int e;
+
+
+int a;
+switch(a)
+case (1)
+{
+	int b;
+}
+
+
+for(i=0; i<3; i++)
+{
+	i = i+1;
+}
+
+int a()
+{
+	int c;
+	return c;
+}
+
+int t;
+t = a();
+
+
+int t = 'a';
+
+int t = 'a'+'v';
+
+
+int sum(int a, int b[])
+{
+	return a+b[1];
+}
+
+int c[10],i;
+int d = sum(i,sum(c[0],c[1]));
+************************************************************
+
+void sum(int a)
+{
+	int b;
+	return 0;
+}
+sum(3);
+
+
+
+void sum()
+{
+	if(1)
+	{
+		int a;
+		a = 5;
+	}
+	int b = a;
+}
+sum();
+
+void sum()
+{
+	int a	
+	if(1)
+	{
+		a = 5
+	}
+	int b = a
+}
+sum();
+
+void sum()
+{
+	int a;
+	if(1)
+	{
+		a = 5;
+	}
+	int b = a;
+}
+sum();
+
+
+int a=3,b='a';
+if(a>b)
+{
+	int c = 2+4;
+}
+elseif(a<b)
+{
+	int d = 3+4;
+}
+int d = 10;
+
+int d = 0,i;
+for(i = 0;i<5;i++)
+{
+	d = d+2;
+}
+
+
+
+if(20<4)
+{
+	int c = 2+4;
+}
+int d = 10;
+
+
+int sum(int a,int b)
+{
+	int c = a+b;
+	return c;
+}
+sum(2,sum(1,3));
+
+
+int a = 1,b = 1;
+int d = 10;
+
+while(a<3)
+{
+	while(b<2)
+	{
+		d = 20;
+		b = b+2;
+	}
+	a = a+4;
+}
+
+int a = 5;
+switch(a)
+case(1)
+{
+	a = 10;
+}
+case(5)
+{
+	a = 100;
+}
+
+int b = 53;
+
+int d = 0,i;
+for(i = 0;i<5;i++)
+{
+	continue;
+	d = d+2;
+}
+
+
+int d = 0,i;
+for(i = 0;i<5;i++)
+{
+	d = d+2;
+	break;
+	d = d+10;
+
+}
+
+

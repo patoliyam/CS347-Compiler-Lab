@@ -1,0 +1,6 @@
+if a<3 then 
+begin
+r := r*2+6;
+p := p-3;
+q := 2*p;
+end

@@ -1,0 +1,129 @@
+< grammar_start > :  <stmtlist> 
+< stmtlist > :  <stmt>  <stmtlist> 
+< stmt > :  <expression>  <semi> 
+< expression > :  <init> 
+< init > :  <ID>  <EQ>  <constructor>  <init> 
+< ID > : j
+< EQ > : =
+< constructor > :  <JOB>  <LP>  <job_parameter_list>  <rp> 
+< JOB > : job
+< LP > : (
+< job_parameter_list > :  <job_parameter>  <F> 
+< job_parameter > :  <JOB_ID>  <EQ>  <value> 
+< JOB_ID > : job_id
+< EQ > : =
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 1
+< F > :  <COMMA>  <job_parameter_list> 
+< COMMA > : ,
+< job_parameter_list > :  <job_parameter>  <F> 
+< job_parameter > :  <FLOPS_REQUIRED>  <EQ>  <value> 
+< FLOPS_REQUIRED > : flops_required
+< EQ > : =
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 100
+< F > :  <COMMA>  <job_parameter_list> 
+< COMMA > : ,
+< job_parameter_list > :  <job_parameter>  <F> 
+< job_parameter > :  <DEADLINE>  <EQ>  <value> 
+< DEADLINE > : deadline
+< EQ > : =
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr3>  <MULTIPLY>  <expr4> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 50
+< MULTIPLY > : *
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 2
+< F > :  <COMMA>  <job_parameter_list> 
+< COMMA > : ,
+< job_parameter_list > :  <job_parameter>  <F> 
+< job_parameter > :  <MEM_REQUIRED>  <EQ>  <value> 
+< MEM_REQUIRED > : mem_required
+< EQ > : =
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 512
+< F > :  <COMMA>  <job_parameter_list> 
+< COMMA > : ,
+< job_parameter_list > :  <job_parameter>  <F> 
+< job_parameter > :  <AFFINITY>  <EQ>  <argument> 
+< AFFINITY > : affinity
+< EQ > : =
+< argument > :  <LSP>  <valuearray>  <rsp> 
+< LSP > : [
+< valuearray > :  <value>  <H> 
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 0.2
+< H > :  <COMMA>  <valuearray> 
+< COMMA > : ,
+< valuearray > :  <value>  <H> 
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 0.5
+< H > :  <COMMA>  <valuearray> 
+< COMMA > : ,
+< valuearray > :  <value>  <H> 
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 1
+< H > :  <COMMA>  <valuearray> 
+< COMMA > : ,
+< valuearray > :  <value>  <H> 
+< value > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 2
+< H > : 
+< rsp > :  <RSP> 
+< RSP > : ]
+< F > : 
+< rp > :  <RP> 
+< RP > : )
+< init > : 
+< semi > :  <SEMI> 
+< SEMI > : ;
+< stmtlist > : 

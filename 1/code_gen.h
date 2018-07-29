@@ -1,0 +1,10 @@
+void stmt();
+char* expr();
+char* term();
+char* factor();
+char* expr2();
+char* term2();
+char* term1(char* prev);
+char* factor2();
+char* expr1(char* prev);
+char* exprc();

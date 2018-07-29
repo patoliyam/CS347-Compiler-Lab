@@ -1,0 +1,44 @@
+< grammar_start > :  <stmtlist> 
+< stmtlist > :  <stmt>  <stmtlist> 
+< stmt > :  <d>  <semi> 
+< d > :  <type>  <list_var> 
+< type > :  <INT> 
+< INT > : int
+< list_var > :  <id_arr> 
+< id_arr > :  <ID>  <br_dimlist> 
+< ID > : a
+< br_dimlist > :  <br_dimlist>  <LSP>  <mathexpr>  <RSP> 
+< br_dimlist > :  <LSP>  <mathexpr>  <RSP> 
+< LSP > : [
+< mathexpr > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 10
+< RSP > : ]
+< LSP > : [
+< mathexpr > :  <arithexpr> 
+< arithexpr > :  <expr1> 
+< expr1 > :  <expr2> 
+< expr2 > :  <expr3> 
+< expr3 > :  <expr4> 
+< expr4 > :  <factor> 
+< factor > :  <NUM> 
+< NUM > : 20
+< RSP > : ]
+< semi > :  <SEMI> 
+< SEMI > : ;
+< stmtlist > :  <stmt>  <stmtlist> 
+< stmt > :  <d>  <semi> 
+< d > :  <type>  <list_var> 
+< type > :  <INT> 
+< INT > : int
+< list_var > :  <id_arr> 
+< id_arr > :  <ID> 
+< ID > : c
+< semi > :  <SEMI> 
+< SEMI > : ;
+< stmtlist > : 

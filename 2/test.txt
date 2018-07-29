@@ -1,0 +1,107 @@
+([1-9][0-9]*) | ([0-9]*[.][0-9]+) { printf("Found %s\n", yytext); return NUM; }
+ | ([0-9]*[.][0-9]+)
+(([1-9][0-9]*) | ([0-9]*[.][0-9]+)) { printf("Found %s\n", yytext); return NUM; }
+Link(start_point="proc1", end_point="ram", bandwitdth=55 , 44, "link1")
+Processor( isa = "AR", clock_speed : 40, l1_memory = Mem1)
+Memory(memory_type="primary", mem_size = 512)
+Job(job_id=1, flops_required= 100, deadline = 50, mem_required = 512,affinity = [0.2,0.5,1,2])
+Cluster(processors=processor_array1,topology = "ring", 50, 40, name = "cluster1")
+
+for(i=0;i<10;i++)
+{
+mem1 = Memory(memory_type="primary", mem_size = 512 )
+processor_array[i] = Processor(architecture_type='Embedded_CPU', isa = "ARM",
+clock_speed : 40, l1_memory = mem1)
+}
+
+job_1 = Job(job_id=1, flops_required = 100, deadline = 200, mem_required = 1024, affinity =
+[0.2,0.5,1,2])
+job_2 = Job(job_id=2, flops_required = 5, deadline = 20, mem_required = 64, affinity =
+[0.2,0.5,1,2])
+mem1 = Memory(memory_type= 'cache', mem_size=1)
+ram = Memory(memory_type= 'primary', mem_size = 2048,, name = "ram1")
+proc_1 = Processor(isa = 'ARM', clock_speed : 40, l1_memory = mem1)
+link_1 = Link(start_point = "proc1", end_point= "ram1", 40, 50)
+proc_1.submit_jobs([job_1,job_2,job_3])
+run(proc_1)
+
+job_1 = Job(job_id=1, flops_required = 100, deadline = 200, mem_required = 1024, affinity =
+[0.2,0.5,1,2])
+job_2 = Job(job_id=2, flops_required = 5, deadline = 20, mem_required = 64, affinity =
+[0.2,0.5,1,2])
+job_3 = Job(job_id=3, flops_required = 5, deadline = 10, mem_required = 64, affinity =
+[0.2,0.5,1,2])
+mem1 = Memory(memory_type= 'cache', mem_size=1)
+mem2 = Memory(memory_type= 'cache', mem_size=0.5)
+mem3 = Memory(memory_type= 'cache', mem_size=1.5)
+ram = Memory(memory_type= 'primary', mem_size = 2048,, name = "ram1")
+proc_1 = Processor( isa = 'ARM', clock_speed : 40, l1_memory = mem1)
+proc_2 = Processor( isa = 'AMD', clock_speed : 60, l1_memory = mem2, name = "proc_2")
+proc_3 = Processor(isa = 'MIPS', clock_speed : 20, l1_memory = mem3, name = "proc_3")
+link_1 = Link(start_point = "proc_1", end_point= "ram1", 40, 50)
+link_2 = Link(start_point = "proc_2", end_point= "ram1", 40, 50)
+link_3 = Link(start_point = "proc_3", end_point= "ram1", 40, 50)
+proc_1.submit_jobs(job_1)
+proc_2.submit_jobs(job_2)
+proc_3.submit_jobs(job_3)
+run([proc_1,proc_2,proc_3])
+
+
+job_1 = Job(job_id=1, flops_required = 100, deadline = 200, mem_required = 1024,affinity =
+[0.2,0.5,1,2])
+job_2 = Job(job_id=2, flops_required = 5, deadline = 20, mem_required = 64, affinity =
+[0.2,0.5,1,2])
+mem1 = Memory(memory_type= 'cache', mem_size=1)
+ram = Memory(memory_type= 'primary', mem_size = 2048,, name = "ram1")
+proc_1 = Processor(isa = 'ARM', clock_speed : 40, l1_memory = mem1)
+link_1 = Link(start_point = "proc_1", end_point= "ram1", 40, 50)
+while(! Ram.get_available_memory())
+{
+wait(1)
+}
+if job_1.get_memory() <= ram.get_available_memory()
+{
+proc_1.submit_jobs(job_1)
+}
+else
+{
+discard_job(job_1)
+}
+
+for ( i=0;i<10;i++)
+{
+job_array[i] = Job(job_id=i, flops_required = 10, deadline = 10 + i*5 , mem_required = 64,
+affinity = [0.2,0.7,1,2])
+}
+for ( i=0;i<10;i++)
+{
+mem1 = Memory(memory_type='primary', mem_size = 512 )
+processor_array[i] = Processor(isa = 'ARM', clock_speed : 40, l1_memory = mem1)
+}
+ram = Memory(memory_type= 'primary', mem_size = 4096,, name = "ram1")
+cluster_1 = Cluster(processors=processor_array,topology = "ring", 50, 40, name = "cluster1")
+link_1 = Link(start_point = "cluster1", end_point= "ram1", 40, 50)
+cluster_1.submit_jobs(job_array)
+run(cluster_1)
+
+for ( i=0;i<10;i++)
+{
+job_array[i] = Job(job_id=i, flops_required = 10, deadline = 10 + i*5 , mem_required = 64,
+affinity = [0.2,0.7,1,2])
+}
+for ( i=0;i<5;i++)
+{
+mem1 = Memory(memory_type='primary', mem_size = 512 )
+processor_array1[i] = Processor( isa = 'ARM', clock_speed : 40, l1_memory = mem1)
+processor_array2[i] = Processor( isa = 'AMD', clock_speed : 80, l1_memory =
+Memory(memory_type='primary', mem_size = 512 ))
+}
+ram = Memory(memory_type= 'primary', mem_size = 4096,, name = "ram1")
+cluster_1 = Cluster(processors=processor_array1,topology = "ring", 50, 40, name = "cluster1")
+cluster_2 = Cluster(processors=processor_array2,topology = "star", 50, 40, name = "cluster2")
+link_1 = Link(start_point = "cluster1", end_point= "ram1", 40, 50)
+link_2 = Link(start_point = "cluster2", end_point= "ram1", 40, 50)
+cluster_3 = Cluster(processors=[cluster_1, cluster_2],topology = "star", 100, 80, name =
+"cluster3")
+cluster_3.submit_jobs(job_b_array1)
+run(cluster3)
